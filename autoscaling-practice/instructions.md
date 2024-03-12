@@ -18,4 +18,4 @@ To watch if the pod is autoscaling, use `kubectl get hpa php-apache --watch`. Th
 
 ## Alternative
 
-Instead of running the command `kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"` we can use the `hpa-v2.yaml` file which specifies a Horizontal Pod Autoscaler for Kubernetes. We can simply run `kubectl apply -f hpa-v2.yaml` and it will autoscale.
+Instead of running the command `kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10` we can use the `hpa-v2.yaml` file which specifies a Horizontal Pod Autoscaler for Kubernetes. We can simply run `kubectl apply -f hpa-v2.yaml` and it will autoscale.
